@@ -1,11 +1,15 @@
 
 
 
-// let images = ["./images0.jpg" , "./images1.jpg", "./images2.jpg", "./images3.jpg", ./images4.jpg", "./images5.jpg" ] ;
+let images = ["/image0.jpg" , "/image1.jpg", "/image2.jpg", "/image3.jpg", "/image4.jpg", "/image5.jpg" ] ;
 
-let images = [ "0" , "1", "2", "3", "4", "5" ] ;
+
+// console.log(images.length ,": images array length" );
+
+// let images = [ "0" , "1", "2", "3", "4", "5" ] ;
 
 // console.log(images.indexOf(`./images3.jpg`));
+
 
 let img = document.querySelector(`#image`) ;
 
@@ -13,33 +17,122 @@ img.innerText = images[0] ;
 
 function slider(event) {
 
-    console.log(event);
+    // console.log(event);
 
-    let xAxis = event.clientX ;
+    let clickX = event.offsetX;
+    let imageCurrentRenderWidth = event.target.clientWidth;
+    let clickXPercentage = Math.round((clickX * 100) / imageCurrentRenderWidth);
 
-    if ( xAxis < 200 ) {
-        img.innerText = 
-    } else {
-        
-    }
 
+    // console.log("clickXPercentage: ", clickXPercentage, "%");
 
 
 
     //<<<<<<<<========== for  image =============>>>>>>>>>>>>// 
 
 
-    // let srcImage =  document.querySelector(`#image`).src.split("") ;
-    // console.log("src :", srcImage[48]) 
+    let srcCurrentImage =  document.querySelector(`#image`).src.split("-slider")[1] ;
+    // console.log(srcCurrentImage ," : src");
+
+
+    if (clickXPercentage > 25) {
+
+        // console.log("forwad");
+
+        let nextIndexOfImages = (images.indexOf(srcCurrentImage) + 1 ) ;
+    
+        // console.log(nextIndexOfImages, "  index") ;
+
+        if ( nextIndexOfImages > images.length - 1 ) {
+            nextIndexOfImages = 0 ;            
+        }
+
+        document.querySelector(`#image`).src = `.${images[nextIndexOfImages]}` ;
+    
+    }
+
+    else{
+    
+        let nextIndexOfImages = (images.indexOf(srcCurrentImage) - 1 ) ;
+    
+        // console.log(nextIndexOfImages, "  index") ;
+
+        if ( nextIndexOfImages < 0 ) {
+            nextIndexOfImages = images.length- 1  ;            
+        }
+
+        document.querySelector(`#image`).src = `.${images[nextIndexOfImages]}` ;
+    
+    }
+    
+    
+    
+    
+    
+    //<<<<<<<<===========================>>>>>>>>>>>>// 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // let imageNum = srcImage[48]
+    // console.log("imageNum :", imageNum) 
 
     // let icon = images[5]   //"./images4.jpg" //images[++srcImage[48]];
     // icon.replace("/file// ");
    
 
-    // document.querySelector(`#image`).src =  "./images4.jpg"         //images[++srcImage[48]] icon ; //
+    // document.querySelector(`#image`).src =  "./image4"         //images[++srcImage[48]] icon ; //
 
 
- //<<<<<<<<===========================>>>>>>>>>>>>// 
 
 
 
@@ -57,3 +150,14 @@ function slider(event) {
     
 }
 
+
+
+
+
+    // let xAxis = event.clientX ;
+
+    // if ( xAxis < 200 ) {
+    //     img.innerText = 
+    // } else {
+        
+    // }
